@@ -16,12 +16,13 @@ def main():
     rows_per_message = config['Config'].getint('rows_per_message')
     time_offset = config['Config'].getint('time_offset')
     time_step = config['Config'].getint('time_step')
+    row_count = config['Config'].getint('row_count')
     filename = config['Config']['csv_file']
     device_route = config['Config']['device_http_route']
 
     try: 
         currentTimeMs = round(time() * 1000)
-        startTime = currentTimeMs - time_offset #get current time in ms minus an offset
+        startTime = currentTimeMs - (time_step * row_count) #get current time in ms minus an offset
         messages = []
 
         with open(filename, 'r') as file:
@@ -41,7 +42,8 @@ def main():
                     "values": {"data": rowlist}
                 }
                 messages.append(messageData)
-                if idx % rows_per_message == 0:
+                var = idx
+                if var % rows_per_message == 0:
                     sendHTTP(device_route, messages)
                     messages = []
             if idx % rows_per_message != 0:
