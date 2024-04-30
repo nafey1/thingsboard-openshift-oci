@@ -26,11 +26,16 @@ def main():
         messages = []
 
         with open(filename, 'r') as file:
+            skippedHeader:bool = False
             reader = csv.reader(file)
             idx = 0
             for row in reader:
+                print(f'row: {idx}')
+                if not skippedHeader and csv_has_header:
+                    skippedHeader = True
+                    continue
                 idx = idx + 1
-                rowlist = list(map(float,row)) #Get the csv row as a list of floats
+                rowlist:list[float] = list(map(float,row)) #Get the csv row as a list of floats
                 messageTime = (startTime + (idx * time_step))
                 messageData = {
                     "ts": messageTime,
