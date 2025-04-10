@@ -39,3 +39,4 @@ status:
       routerCanonicalHostname: apps.thingsboard.openshift.solutions
 ```
 > Modify the host part to your own domain
+Source: https://github.com/thingsboard/thingsboard/issues/3637
