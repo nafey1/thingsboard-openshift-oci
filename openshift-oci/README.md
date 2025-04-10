@@ -4,6 +4,8 @@ This folder containing scripts and Kubernetes resources configurations to run Th
 
 You can find the deployment guide by the [**link**](https://thingsboard.io/docs/user-guide/install/cluster/openshift-cluster-setup/).
 
+Use the **openshift-oci** installation in the folder, as the default one does not bring the MQTT and HTTP pods cleanly.
+
 In order for the Thingsboard MQTT to work correctly, create a route for mqtt and modify the service **tb-mqtt-transport** and change the ServiceType from **ClusterIP** to **NodePort**. Modify the listener and use the Nodeport exposed by he service.
 
 ```yaml
