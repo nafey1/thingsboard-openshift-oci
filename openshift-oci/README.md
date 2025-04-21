@@ -18,7 +18,7 @@ metadata:
     openshift.io/host.generated: 'true'
 spec:
   host: tb-route-mqtt-transport-thingsboard.apps.thingsboard.openshift.solutions
-  path: /api/v1
+  path: /
   to:
     kind: Service
     name: tb-mqtt-transport
